@@ -9,22 +9,22 @@
 </head>
 <body>
     <header>
-        <a id="Logo" href="index.html"><img src="C:/Users/Naam/Documents/GitHub/beroepsproduct-wtux-Thijs-Melchers/Images/Logo.png" alt=""></a>
+        <a id="Logo" href="index.php"><img src="Images/Logo.png" alt=""></a>
         <p>Pizza Sole Machina </p>
-        <a id="Account" href="Account.html"><img src="C:/Users/Naam/Documents/GitHub/beroepsproduct-wtux-Thijs-Melchers/Images/Log.in.png" alt=""></a>
+        <a id="Account" href="Account.php"><img src="Images/Log.in.png" alt=""></a>
     </header>
     <nav>
         <ul>
-            <li><a id="Overzicht" href="BestellingAfgerond.html"><img src="C:/Users/Naam/Documents/GitHub/beroepsproduct-wtux-Thijs-Melchers/Images/Profile.png" alt=""></a></li>
-            <li><a id="Menu" href="index.html"><img src="C:/Users/Naam/Documents/GitHub/beroepsproduct-wtux-Thijs-Melchers/Images/Menu.png" alt=""></a></li>
-            <li><a id="Winkelwagen" href="Winkelwagen.html"><img src="C:/Users/Naam/Documents/GitHub/beroepsproduct-wtux-Thijs-Melchers/Images/Winkelwagen.webp" alt=""></a></li>
+            <li><a id="Overzicht" href="BestellingAfgerond.php"><img src="Images/Profile.png" alt=""></a></li>
+            <li><a id="Menu" href="index.php"><img src="Images/Menu.png" alt=""></a></li>
+            <li><a id="Winkelwagen" href="Winkelwagen.php"><img src="Images/Winkelwagen.webp" alt=""></a></li>
         </ul>
     </nav>
     
     <section>
         <article>
         <h4>Registreren</h4>
-        <form action="index.html" method="post">
+        <form action="index.php" method="post">
             <label>Naam: *</label>
             <input type="text" name="Naam"  maxlength="20" required placeholder="Vul hier uw naam in">
             <label>E-Mailadres *</label>
@@ -44,10 +44,10 @@
             <p>Telefoonnummer: 0693849241</p>
         </div>
         <div>
-        <a href="Info.html"><p>Contact</p></a>
+        <a href="Info.php"><p>Contact</p></a>
             </div>
         <div>
-        <a href="Info.html">Informatie</a>
+        <a href="Info.php">Informatie</a>
         </div>
     </footer>
 </body>

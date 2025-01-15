@@ -1,0 +1,251 @@
+body{
+    background-color: lightgrey;
+    padding-bottom: 170px;
+}
+
+header img{
+    height: 120px;
+    width: auto;
+}
+
+header{
+    background-color: #FF5733;
+    color: black;
+    padding: 10px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+nav ul {
+    background-color:#FFC300;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    margin: 0px;
+    
+}
+
+nav ul li {
+    padding: 30px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+a:hover{
+    color: red;
+}
+
+button:hover{
+    color: red;
+    border-color: red;
+    background-color: burlywood;
+    cursor:pointer;
+}
+
+footer:hover{
+    cursor:pointer;
+}
+
+img{
+    width: 320px;
+    height: 240px;
+    border-radius: 10%;
+}
+
+
+section{
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-left: 15px;
+    padding-right: 15px;  
+    gap: 50px;
+    margin-top: 20px;
+
+}
+
+nav img{
+    padding: 10px;
+    height: 60px;
+    width: auto;
+    color: white;
+}
+
+section div{
+   height: auto;
+   width: 300px;
+   padding: 20px;
+   padding-right: 40px;
+   border-radius: 1%;
+   background-color: beige;
+padding-bottom: 50px;
+} 
+
+h1{
+    font-weight: 600;
+    font-size: 40px;
+}
+
+h2{
+    font-weight: 200px;
+    font-size: 15px;
+}
+
+h5{
+    font-weight: 80px;
+    font-size: 20px;
+}
+
+h4{
+    font-weight: 30px;
+    font-size: 15px;
+}
+
+button{
+    background-color: burlywood;
+    border-color: black;
+}
+
+section form{
+    display: grid;
+    grid-template-columns: auto;
+    width: 80%;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 1%;
+    background-color: beige;
+    padding-bottom: 50px;
+}
+
+section div.Bestelling{
+  width: 80%;
+ 
+}
+
+section div.Bestelling h1{
+    margin-left: 50px;
+}
+
+section div.Bestelling h3{
+    margin-left: 50px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+section div.Info{
+    display: grid;
+    grid-template-columns: auto;
+    width: 95%;
+    padding: 20px;
+    border-radius: 1%;
+    background-color: beige;
+}
+
+section article{
+    height: auto;
+    width: 40%;
+    padding: 20px;
+    padding-right: 40px;
+    border-radius: 10%;
+    background-color: beige;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+
+}
+
+footer{
+    background-color: #FF5733;
+    color: #FFC300;
+    padding: 20px;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-top: 5px solid #FFC300;
+    gap: 10px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-decoration: none;
+}
+
+footer div{
+    border-style:double;
+    border-top: #FF5733;
+    border-bottom: #FF5733;
+}
+
+footer a {
+    color: #FFC300;
+    text-decoration: none;
+}
+
+section.Korting{
+    background-color: lightgrey;
+}
+
+
+.Korting {
+    height: 425px;
+    justify-content: left;
+    background-color: lightgrey;
+}
+
+
+.Korting img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute; 
+    width: 98%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: swap 4s infinite;
+}
+
+.Korting img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+@keyframes swap {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+section div.Overzicht{
+    font-size: 30px;
+}
+
+section div.Bestelling h1{
+    margin-left: 10px;
+}
+
+section div.Bestelling select{
+    margin-left: 60px;
+}
+
+div a{
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 20px; 
+    background-color: #FF5733;
+    color: #FFC300;
+    padding: 10px;
+    border-radius: 5px;
+}
