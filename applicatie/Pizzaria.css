@@ -169,7 +169,7 @@ section article{
 footer{
     background-color: #FF5733;
     color: #FFC300;
-    padding: 20px;
+    padding: 10px;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
     align-items: center;
