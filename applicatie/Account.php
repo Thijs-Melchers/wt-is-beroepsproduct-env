@@ -1,17 +1,10 @@
 <?php
+require_once("db_connectie.php");
+maakVerbinding();
 session_start();
 
-$db_host = 'database_server';
-$db_name = 'Inloggen';
-$db_user = 'sa';
-$db_password = 'abc123!@#';
+$verbinding->exec('USE Inloggen');
 
-try {
-    $verbinding = new PDO('sqlsrv:Server=' . $db_host . ';Database=' . $db_name . ';ConnectionPooling=0;TrustServerCertificate=1', $db_user, $db_password);
-    $verbinding->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Verbindingsfout: " . $e->getMessage());
-}
 
 $error = "";
 
@@ -32,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if ($user && $password === $user['password']) {
+                if ($user && password_verify($password, $user['password'])) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['role'] = $user['role'];
 
                     if ($user['role'] === 'medewerker') {
-                        header('Location: Index.php');
+                        header('Location: Besteloverzicht.php');
                     } else {
                         header('Location: Index.php');
                     }
@@ -58,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -75,12 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a id="Logo" href="index.php"><img src="Images/Logo.png" alt="Logo"></a>
         <p>Pizza Sole Machina</p>
         <?php if (isset($_SESSION['username'])): ?>
-
-            <form action="Account.php" method="post" style="display: inline;">
-                <button type="submit" id="UitlogKnop">Uitloggen</button>
+            <form action="" method="post" style="display: inline;">
+                <button type="submit" name="logout" id="UitlogKnop">Uitloggen</button>
             </form>
-
-            <span id="WelkomTekst">Welkom, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+            <span id="WelkomTekst"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
         <?php else: ?>
             <a href="Account.php"><img src="Images/Log.in.png" alt=""></a>
         <?php endif; ?>
@@ -112,13 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="medewerker">Medewerker</option>
             </select>
 
-            <input type="submit" value="Inloggen">
+            <input type="submit" value="Inloggen"><br>
 
             <?php if ($error): ?>
                 <p class="error"><?php echo $error; ?></p>
             <?php endif; ?>
 
-            <p class="register-link">Nog geen account? <a href="Registreren.php">Registreer hier</a></p>
+            <a href="Registreren.php">
+                <button type="button">Registreren</button>
+            </a>
         </form>
     </section>
 

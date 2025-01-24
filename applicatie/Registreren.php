@@ -1,15 +1,9 @@
 <?php
-$db_host = 'database_server';
-$db_name = 'Inloggen';
-$db_user = 'sa';
-$db_password = 'abc123!@#';
+require_once("db_connectie.php");
+maakVerbinding();
+session_start();
 
-try {
-    $verbinding = new PDO('sqlsrv:Server=' . $db_host . ';Database=' . $db_name . ';ConnectionPooling=0;TrustServerCertificate=1', $db_user, $db_password);
-    $verbinding->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Verbindingsfout: " . $e->getMessage());
-}
+$verbinding->exec('USE Inloggen');
 
 $error = "";
 
@@ -17,19 +11,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['Naam'];
     $password = $_POST['Wachtwoord'];
     $role = $_POST['Rol'];
+    $adres = $_POST['Adres'];
 
-    if (!empty($username) && !empty($password) && !empty($role)) {
+    if (!empty($username) && !empty($password) && !empty($role) && !empty($adres)) {
         try {
-            $sql = "INSERT INTO users (username, password, role) VALUES (:username, :password, :role)";
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO users (username, password, role, adres) VALUES (:username, :password, :role, :adres)";
             $stmt = $verbinding->prepare($sql);
 
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':password', $hashed_password);
             $stmt->bindParam(':role', $role);
+            $stmt->bindParam(':adres', $adres);
 
             if ($stmt->execute()) {
-                header("Location: Index.php");
-                exit;
+                $lastUserId = $verbinding->lastInsertId();
+
+                $sql = "SELECT id, username, role, adres FROM users WHERE id = :id";
+                $stmt = $verbinding->prepare($sql);
+                $stmt->bindParam(':id', $lastUserId);
+                $stmt->execute();
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($user) {
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['role'] = $user['role'];
+                    $_SESSION['adres'] = $user['adres'];
+
+                    if ($user['role'] == 'medewerker') {
+                        header("Location: besteloverzicht.php");
+                    } else {
+                        header("Location: Index.php");
+                    }
+                    exit;
+                }
             } else {
                 $error = "Er is een fout opgetreden bij de registratie.";
             }
@@ -38,14 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         $error = "Vul alle velden in!";
-    }
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logout'])) {
-        session_unset();
-
-        session_destroy();
-
-        header("Location: Inloggen.php");
-        exit();
     }
 }
 ?>
@@ -62,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <header>
-        <a id="Logo" href="index.php"><img src="Images/Logo.png" alt="Logo"></a>
+        <a id="Logo" href=""><img src="Images/Logo.png" alt="Logo"></a>
         <p>Pizza Sole Machina</p>
         <?php if (isset($_SESSION['username'])): ?>
             <form action="" method="post" style="display: inline;">
                 <button type="submit" name="logout" id="UitlogKnop">Uitloggen</button>
             </form>
-            <span id="WelkomTekst">Welkom, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+            <span id="WelkomTekst"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
         <?php else: ?>
             <a href="Account.php"><img src="Images/Log.in.png" alt=""></a>
         <?php endif; ?>
@@ -98,7 +107,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <option value="medewerker">Medewerker</option>
                 </select>
 
-                <input type="submit" value="Registreren">
+                <label for="Adres">Adres: *</label>
+                <input type="text" id="Adres" name="Adres" required placeholder="Vul hier uw adres in">
+
+                <input type="submit" value="Registreren"><br>
+
+                <a href="Account.php">
+                    <button type="button">Terug naar Inloggen</button>
+                </a>
 
                 <?php if ($error): ?>
                     <p class="error"><?php echo $error; ?></p>
@@ -106,6 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </article>
     </section>
+
     <footer>
         <div>
             <p>Telefoonnummer: 0693849241</p>

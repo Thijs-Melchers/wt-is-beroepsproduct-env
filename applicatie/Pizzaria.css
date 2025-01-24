@@ -1,14 +1,14 @@
-body{
+body {
     background-color: lightgrey;
     padding-bottom: 170px;
 }
 
-header img{
+header img {
     height: 120px;
     width: auto;
 }
 
-header{
+header {
     background-color: #FF5733;
     color: black;
     padding: 10px;
@@ -22,12 +22,12 @@ header{
 }
 
 nav ul {
-    background-color:#FFC300;
+    background-color: #FFC300;
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: space-evenly;
     margin: 0px;
-    
+
 }
 
 nav ul li {
@@ -42,82 +42,82 @@ nav ul li a {
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     color: red;
 }
 
-button:hover{
+button:hover {
     color: red;
     border-color: red;
     background-color: burlywood;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-footer:hover{
-    cursor:pointer;
+footer:hover {
+    cursor: pointer;
 }
 
-img{
+img {
     width: 320px;
     height: 240px;
     border-radius: 10%;
 }
 
 
-section{
-    display: flex;  
+section {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-left: 15px;
-    padding-right: 15px;  
+    padding-right: 15px;
     gap: 50px;
     margin-top: 20px;
 
 }
 
-nav img{
+nav img {
     padding: 10px;
     height: 60px;
     width: auto;
     color: white;
 }
 
-section div{
-   height: auto;
-   width: 300px;
-   padding: 20px;
-   padding-right: 40px;
-   border-radius: 1%;
-   background-color: beige;
-padding-bottom: 50px;
-} 
+section div {
+    height: auto;
+    width: 300px;
+    padding: 20px;
+    padding-right: 40px;
+    border-radius: 1%;
+    background-color: beige;
+    padding-bottom: 50px;
+}
 
-h1{
+h1 {
     font-weight: 600;
     font-size: 40px;
 }
 
-h2{
+h2 {
     font-weight: 200px;
     font-size: 15px;
 }
 
-h5{
+h5 {
     font-weight: 80px;
     font-size: 20px;
 }
 
-h4{
+h4 {
     font-weight: 30px;
     font-size: 15px;
 }
 
-button{
+button {
     background-color: burlywood;
     border-color: black;
 }
 
-section form{
+section form {
     display: grid;
     grid-template-columns: auto;
     width: 80%;
@@ -128,23 +128,23 @@ section form{
     padding-bottom: 50px;
 }
 
-section div.Bestelling{
-  width: 80%;
- 
+section div.Bestelling {
+    width: 80%;
+
 }
 
-section div.Bestelling h1{
+section div.Bestelling h1 {
     margin-left: 50px;
 }
 
-section div.Bestelling h3{
+section div.Bestelling h3 {
     margin-left: 50px;
     padding: 10px;
     font-weight: 700;
     font-size: 20px;
 }
 
-section div.Info{
+section div.Info {
     display: grid;
     grid-template-columns: auto;
     width: 95%;
@@ -153,7 +153,7 @@ section div.Info{
     background-color: beige;
 }
 
-section article{
+section article {
     height: auto;
     width: 40%;
     padding: 20px;
@@ -166,12 +166,13 @@ section article{
 
 }
 
-footer{
+
+footer {
     background-color: #FF5733;
     color: #FFC300;
     padding: 10px;
     display: grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     text-align: center;
     font-size: 18px;
@@ -184,8 +185,8 @@ footer{
     text-decoration: none;
 }
 
-footer div{
-    border-style:double;
+footer div {
+    border-style: double;
     border-top: #FF5733;
     border-bottom: #FF5733;
 }
@@ -195,7 +196,7 @@ footer a {
     text-decoration: none;
 }
 
-section.Korting{
+section.Korting {
     background-color: lightgrey;
 }
 
@@ -211,7 +212,7 @@ section.Korting{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: absolute; 
+    position: absolute;
     width: 98%;
     height: 400px;
     object-fit: cover;
@@ -224,26 +225,34 @@ section.Korting{
 }
 
 @keyframes swap {
-    0%, 50% { opacity: 1; }
-    50.01%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    50.01%,
+    100% {
+        opacity: 0;
+    }
 }
 
-section div.Overzicht{
+section div.Overzicht {
     font-size: 30px;
 }
 
-section div.Bestelling h1{
+section div.Bestelling h1 {
     margin-left: 10px;
 }
 
-section div.Bestelling select{
+section div.Bestelling select {
     margin-left: 60px;
 }
 
-div a{
+div a {
     margin-left: 20px;
     text-decoration: none;
-    font-size: 20px; 
+    font-size: 20px;
     background-color: #FF5733;
     color: #FFC300;
     padding: 10px;
